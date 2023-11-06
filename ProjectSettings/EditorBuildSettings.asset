@@ -168,13 +168,13 @@ EditorBuildSettings:
     path: Assets/Scenes/VisualScripting/VS_OnTrackablesChangedUserFacing/VS_OnTrackablesChangedUserFacing.unity
     guid: d966c4d085949488799fa16be4c4455e
   - enabled: 0
-    path: Assets/AR_climbing/CQR_placement.unity
+    path: Assets/AR_climbing/Scenes/CQR_placement.unity
     guid: a68bdcba4600541aeaac2cca0f16cfa0
   - enabled: 0
     path: Assets/Scenes/Interaction/InteractionTest.unity
     guid: 86e8737c133fd42fd8fae2f3d19a6b4a
   - enabled: 1
-    path: Assets/AR_climbing/CQR_placeHalper.unity
+    path: Assets/AR_climbing/Scenes/CQR_placeHalper.unity
     guid: 5510880c99aef462194ffbd8bed2ce1d
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: c52d3bb36b4c86f47af54ab9c7a02589,
