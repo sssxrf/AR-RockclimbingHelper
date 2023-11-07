@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056269249506285076}
   m_Layer: 0
-  m_Name: PathIndicator
+  m_Name: PathIndicatorYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b3c48368206c4df3af43e39697cd307, type: 2}
+  - {fileID: 2100000, guid: b61c861a90b194f598ea8cfd96668b1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
