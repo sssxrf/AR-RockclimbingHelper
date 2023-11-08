@@ -9,9 +9,12 @@ public class IndicatorManager : MonoBehaviour
     public GameObject IndicatorOrange;
     public GameObject IndicatorGreen;
     public GameObject IndicatorYellow;
+    private GameObject VoiceControl;
 
     public bool DrawPathByHand = true;
     public bool notDisplayed = true;
+
+    public string MapImage = "YellowMap";
 
     [SerializeField]
     private LayerMask layersToInclude;
@@ -22,10 +25,50 @@ public class IndicatorManager : MonoBehaviour
     private List<GameObject> GreenPath = new List<GameObject>();
     private List<GameObject> YellowPath = new List<GameObject>();
 
+    private string OrangeMap = "OrangeMap";
+    private string GreenMap = "GreenMap";
+    private string YellowMap = "YellowMap";
+
+    
+
+    void Start()
+    {
+
+        
+    }
+
+    public void SpeechCheck(string SpeechContent)
+    {
+        
+        if (SpeechContent == "Show path" || SpeechContent == "Show pass")
+        {
+
+            DisplayCurrentPath();
+
+        }
+        else if (SpeechContent == "Generate new path" || SpeechContent == "Generate new pass")
+        {
+            DisplayTwoOtherPath();
+        }
+        else if (SpeechContent == "Choose green path" || SpeechContent == "Choose green pass")
+        {
+            KeepGreenPath();
+        }
+        else if (SpeechContent == "Choose orange path" || SpeechContent == "Choose orange path")
+        {
+            KeepOrangePath();
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
+        
+
+
+
+
+
         if (DrawPathByHand)
         {
 
@@ -62,6 +105,8 @@ public class IndicatorManager : MonoBehaviour
 
             }
         }
+
+        
 
         
     }
@@ -102,13 +147,14 @@ public class IndicatorManager : MonoBehaviour
                 {
 
                     Quaternion newObjectRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                    GameObject newObject = GameObject.Instantiate(IndicatorOrange, hit.point, newObjectRotation);
+                    GameObject newObject = GameObject.Instantiate(IndicatorYellow, hit.point, newObjectRotation);
                     newObject.gameObject.layer = LayerMask.NameToLayer("ignore Raycast");
-                    OrangePath.Add(newObject);
+                    YellowPath.Add(newObject);
                 }
 
             }
         }
+        MapImage = YellowMap;
     }
 
     public void DisplayTwoOtherPath()
@@ -121,7 +167,7 @@ public class IndicatorManager : MonoBehaviour
 
         for (int i = 0; i < numIndicatorInPath; i++)
         {
-            Vector3 pathPositionGreen = PathStartPosition + Vector3.up * i * spacing + Vector3.left * i *Random.Range(-0.003f, -0.002f);
+            Vector3 pathPositionGreen = PathStartPosition + Vector3.up * i * spacing + Vector3.left * i *Random.Range(-0.003f, -0.0028f);
             Vector3 screenPointGreen = MainCam.WorldToScreenPoint(pathPositionGreen);
             var newRayGreen = MainCam.ScreenPointToRay(screenPointGreen);
 
@@ -135,16 +181,16 @@ public class IndicatorManager : MonoBehaviour
                 GreenPath.Add(newObjectG);
             }
 
-            Vector3 pathPositionYellow = PathStartPosition + Vector3.up * i * spacing + Vector3.left * i * Random.Range(0.002f, 0.003f);
-            Vector3 screenPointYellow = MainCam.WorldToScreenPoint(pathPositionYellow);
-            var newRayYellow = MainCam.ScreenPointToRay(screenPointYellow);
+            Vector3 pathPositionOrange = PathStartPosition + Vector3.up * i * spacing + Vector3.left * i * Random.Range(0.0028f, 0.003f);
+            Vector3 screenPointOrange = MainCam.WorldToScreenPoint(pathPositionOrange);
+            var newRayOrange = MainCam.ScreenPointToRay(screenPointOrange);
 
-            var hasHitY = Physics.Raycast(newRayYellow, out var hitY, float.PositiveInfinity, layersToInclude);
-            if (hasHitY)
+            var hasHitO = Physics.Raycast(newRayOrange, out var hitO, float.PositiveInfinity, layersToInclude);
+            if (hasHitO)
             {
 
-                Quaternion newObjectRotation = Quaternion.FromToRotation(Vector3.up, hitY.normal);
-                GameObject newObjectY = GameObject.Instantiate(IndicatorYellow, hitY.point, newObjectRotation);
+                Quaternion newObjectRotation = Quaternion.FromToRotation(Vector3.up, hitO.normal);
+                GameObject newObjectY = GameObject.Instantiate(IndicatorOrange, hitO.point, newObjectRotation);
                 newObjectY.gameObject.layer = LayerMask.NameToLayer("ignore Raycast");
                 YellowPath.Add(newObjectY);
             }
@@ -157,14 +203,15 @@ public class IndicatorManager : MonoBehaviour
     {
         DestroyPath(OrangePath);
         DestroyPath(YellowPath);
+        MapImage = GreenMap;
 
     }
 
-    public void KeepYellowPath()
+    public void KeepOrangePath()
     {
-        DestroyPath(OrangePath);
+        DestroyPath(YellowPath);
         DestroyPath(GreenPath);
-
+        MapImage = OrangeMap;
     }
 
     private void DestroyPath(List<GameObject> pathToDestroy)

@@ -6,6 +6,7 @@ using UnityEngine.XR.ARFoundation;
 public class ObjectManager : MonoBehaviour
 {
     public ARSession aRSession;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +29,12 @@ public class ObjectManager : MonoBehaviour
             foreach (Transform child in TrackedObjects.transform)
             {
                 //string childName = child.name.Substring(0, Mathf.Min(4, child.name.Length));
-                //if (childName == "Mani")
+                //if (child.name == "PlaceableRaw(Clone)")
                 //{
-                //    
-                //}
-                Destroy(child.gameObject);
 
+                //}
+
+                Destroy(child.gameObject);
 
             }
             //StartCoroutine(DestroyAndAccess(TrackedObjects.transform));
@@ -42,7 +43,7 @@ public class ObjectManager : MonoBehaviour
         {
             Debug.Log("GameObject not found");
         }
-        aRSession.Reset();
+        //aRSession.Reset();
     }
     //private IEnumerator DestroyAndAccess(Transform parent)
     //{
@@ -53,6 +54,19 @@ public class ObjectManager : MonoBehaviour
     //    }
     //    // Delay for one frame to ensure that the child objects have been destroyed.
     //    yield return null;
+
+    //}
+
+
+    //void FindChildrenRecursive(Transform parent)
+    //{
         
+    //    foreach (Transform child in parent)
+    //    {
+    //        // Add the child to the list.
+    //        allChildren.Add(child.gameObject);
+    //        // Recursively search for the child's children.
+    //        FindChildrenRecursive(child);
+    //    }
     //}
 }

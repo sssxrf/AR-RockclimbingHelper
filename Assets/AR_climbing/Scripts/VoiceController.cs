@@ -10,6 +10,10 @@ public class VoiceController : MonoBehaviour
     const string LANG_CODE = "en-US";
 
     public float RecordingDurations = 2f;
+    public string SpeechResult = "hpsbd";
+
+    private Camera mainCam;
+
     [SerializeField]
     Text uiText;
 
@@ -18,8 +22,21 @@ public class VoiceController : MonoBehaviour
     {
         Setup(LANG_CODE);
         SpeechToText.Instance.onResultCallback = OnFinalSpeechResult;
+        mainCam = Camera.main;
+
         
     }
+
+    private void ApplySpeechCheck()
+    {
+        IndicatorManager IM = mainCam.GetComponent<IndicatorManager>();
+        ImageSelector IS = mainCam.GetComponent<ImageSelector>();
+
+        IM.SpeechCheck(SpeechResult);
+        IS.SpeechCheck(SpeechResult);
+        SpeechResult = "hpsbd";
+    }
+
 
     void Setup(string code)
     {
@@ -51,12 +68,15 @@ public class VoiceController : MonoBehaviour
         yield return new WaitForSeconds(RecordingDurations);
 
         StopListening();
+        yield return new WaitForSeconds(0.5f);
+        ApplySpeechCheck();
     }
 
     public void OnFinalSpeechResult(string result)
     {
         uiText.text = "received";
         uiText.text = result;
+        SpeechResult = result;
     }
 
 
