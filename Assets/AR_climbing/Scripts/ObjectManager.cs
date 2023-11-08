@@ -6,6 +6,8 @@ using UnityEngine.XR.ARFoundation;
 public class ObjectManager : MonoBehaviour
 {
     public ARSession aRSession;
+
+    public GameObject Full_route;
    
     // Start is called before the first frame update
     void Start()
@@ -23,28 +25,54 @@ public class ObjectManager : MonoBehaviour
 
     public void DeleteAllTrackableObjects()
     {
-        GameObject TrackedObjects = GameObject.Find("Trackables");
-        if (TrackedObjects != null)
+        //GameObject TrackedObjects = GameObject.Find("Trackables");
+        //if (TrackedObjects != null)
+        //{
+        //    foreach (Transform child in TrackedObjects.transform)
+        //    {
+        //        //string childName = child.name.Substring(0, Mathf.Min(4, child.name.Length));
+        //        //if (child.name == "PlaceableRaw(Clone)")
+        //        //{
+
+        //        //}
+
+        //        Destroy(child.gameObject);
+
+        //    }
+        //    //StartCoroutine(DestroyAndAccess(TrackedObjects.transform));
+        //}
+        //else
+        //{
+        //    Debug.Log("GameObject not found");
+        //}
+
+        GameObject PlacedModel = GameObject.Find("PlaceableRaw(Clone)");
+        if (PlacedModel != null)
         {
-            foreach (Transform child in TrackedObjects.transform)
-            {
-                //string childName = child.name.Substring(0, Mathf.Min(4, child.name.Length));
-                //if (child.name == "PlaceableRaw(Clone)")
-                //{
-
-                //}
-
-                Destroy(child.gameObject);
-
-            }
-            //StartCoroutine(DestroyAndAccess(TrackedObjects.transform));
-        }
-        else
-        {
-            Debug.Log("GameObject not found");
+            Destroy(PlacedModel);
         }
         //aRSession.Reset();
     }
+
+    public void ReplaceCurrentObject()
+    {
+        GameObject PlacedModel = GameObject.Find("PlaceableRaw(Clone)");
+        if (PlacedModel != null)
+        {
+
+            Transform currentTrans = PlacedModel.transform;
+            Transform currentParentTrans = PlacedModel.transform.parent;
+
+            GameObject NewObject = Instantiate(Full_route, currentTrans.position, currentTrans.rotation);
+            NewObject.transform.localScale = currentTrans.localScale;
+            if (currentParentTrans != null)
+            {
+                NewObject.transform.SetParent(currentParentTrans);
+            }
+            Destroy(PlacedModel);
+        }
+    }
+
     //private IEnumerator DestroyAndAccess(Transform parent)
     //{
     //    foreach (Transform child in parent)
@@ -58,15 +86,5 @@ public class ObjectManager : MonoBehaviour
     //}
 
 
-    //void FindChildrenRecursive(Transform parent)
-    //{
-        
-    //    foreach (Transform child in parent)
-    //    {
-    //        // Add the child to the list.
-    //        allChildren.Add(child.gameObject);
-    //        // Recursively search for the child's children.
-    //        FindChildrenRecursive(child);
-    //    }
-    //}
+    
 }
