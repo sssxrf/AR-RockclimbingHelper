@@ -63,11 +63,13 @@ public class ObjectManager : MonoBehaviour
             Transform currentTrans = PlacedModel.transform;
             Transform currentParentTrans = PlacedModel.transform.parent;
 
-            GameObject NewObject = Instantiate(Full_route, currentTrans.position, currentTrans.rotation);
-            NewObject.transform.localScale = currentTrans.localScale;
+
+
+            GameObject PlaceableFull = Instantiate(Full_route, currentTrans.position, currentTrans.rotation);
+            PlaceableFull.transform.localScale = currentTrans.localScale;
             if (currentParentTrans != null)
             {
-                NewObject.transform.SetParent(currentParentTrans);
+                PlaceableFull.transform.SetParent(currentParentTrans);
             }
             Destroy(PlacedModel);
         }
@@ -86,5 +88,5 @@ public class ObjectManager : MonoBehaviour
     //}
 
 
-    
+
 }

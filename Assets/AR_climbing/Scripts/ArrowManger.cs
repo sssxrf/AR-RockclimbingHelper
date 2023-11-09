@@ -12,7 +12,7 @@ public class ArrowManger : MonoBehaviour
     private void Start()
     {
 
-        
+        positionList = new List<Vector3>();
 
 
     }
@@ -29,8 +29,10 @@ public class ArrowManger : MonoBehaviour
         positionList.Add(new Vector3(-0.13f, 0, 0));
         positionList.Add(new Vector3(0.26f, 0, 0));
 
-        Arrow = GameObject.FindWithTag("Arrow");
-        Arrow.transform.position = Arrow.transform.position + positionList[currentIndex];
+        //Arrow = GameObject.FindWithTag("Arrow");
+        GameObject Arrow = GameObject.FindWithTag("Arrow");
+       
+        Arrow.transform.position = Arrow.transform.position - positionList[currentIndex];
 
         currentIndex++;
 

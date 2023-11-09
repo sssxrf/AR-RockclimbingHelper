@@ -179,13 +179,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/AR_climbing/Scenes/5RerouteAndShowMap.unity
     guid: 8f9a1a7b0659c4577b8332672790f7cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/AR_climbing/Scenes/1OpeningScene.unity
     guid: 7e80bf633253a4030828a23f07b3e3dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/AR_climbing/Scenes/2PutYourProfileInfo.unity
     guid: 561876c8fe60541ef971f09e3e341145
-  - enabled: 1
+  - enabled: 0
     path: Assets/AR_climbing/Scenes/3silvermountain.unity
     guid: 3447aa000827247ab8fc53a35884bc58
   m_configObjects:
