@@ -7,7 +7,7 @@ public class ArrowManger : MonoBehaviour
     private List<Vector3> positionList;
     private GameObject Arrow;
     private int currentIndex = 0;
-    
+
 
     private void Start()
     {
@@ -24,19 +24,19 @@ public class ArrowManger : MonoBehaviour
 
     public void MoveArrowToNext()
     {
-        
+
         positionList.Add(new Vector3(-0.13f, 0, 0));
         positionList.Add(new Vector3(-0.13f, 0, 0));
         positionList.Add(new Vector3(0.26f, 0, 0));
 
         //Arrow = GameObject.FindWithTag("Arrow");
         GameObject Arrow = GameObject.FindWithTag("Arrow");
-       
-        Arrow.transform.position = Arrow.transform.position - positionList[currentIndex];
+
+        Arrow.transform.localPosition += positionList[currentIndex];
 
         currentIndex++;
 
-        if(currentIndex >= positionList.Count)
+        if (currentIndex >= positionList.Count)
         {
             currentIndex = 0;
         }

@@ -8,6 +8,9 @@ public class ObjectManager : MonoBehaviour
     public ARSession aRSession;
 
     public GameObject Full_route;
+    public GameObject Yellow_route;
+
+    public GameObject ARObject;
    
     // Start is called before the first frame update
     void Start()
@@ -66,6 +69,29 @@ public class ObjectManager : MonoBehaviour
 
 
             GameObject PlaceableFull = Instantiate(Full_route, currentTrans.position, currentTrans.rotation);
+            PlaceableFull.transform.localScale = currentTrans.localScale;
+            if (currentParentTrans != null)
+            {
+                PlaceableFull.transform.SetParent(currentParentTrans);
+            }
+            Destroy(PlacedModel);
+        }
+        
+        
+    }
+
+    public void ReplaceWithYellow()
+    {
+        GameObject PlacedModel = GameObject.Find("PlaceableFull(Clone)");
+        if (PlacedModel != null)
+        {
+
+            Transform currentTrans = PlacedModel.transform;
+            Transform currentParentTrans = PlacedModel.transform.parent;
+
+
+
+            GameObject PlaceableFull = Instantiate(Yellow_route, currentTrans.position, currentTrans.rotation);
             PlaceableFull.transform.localScale = currentTrans.localScale;
             if (currentParentTrans != null)
             {

@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &71716770
 RectTransform:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &211083055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &513194011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3031,7 +3031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1349243553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3739,9 +3739,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image_holder: {fileID: 736456633}
-  orangeMap: {fileID: 21300000, guid: e3fd47e6b145c4e57b2d54b9ad316740, type: 3}
+  orangeMap: {fileID: 21300000, guid: 39ca3286171bf450198beeb415467c29, type: 3}
   yellowMap: {fileID: 21300000, guid: 76903950284454fcaba7bb4d2df4d6c9, type: 3}
-  greenMap: {fileID: 21300000, guid: 39ca3286171bf450198beeb415467c29, type: 3}
+  greenMap: {fileID: 21300000, guid: e3fd47e6b145c4e57b2d54b9ad316740, type: 3}
   stringSource: {fileID: 1856749850}
 --- !u!1 &1898667023
 GameObject:
@@ -3895,7 +3895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1922911894
 RectTransform:
   m_ObjectHideFlags: 0

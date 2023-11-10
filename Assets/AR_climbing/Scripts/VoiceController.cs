@@ -9,7 +9,7 @@ public class VoiceController : MonoBehaviour
 
     const string LANG_CODE = "en-US";
 
-    public float RecordingDurations = 2f;
+    public float RecordingDurations = 3f;
     public string SpeechResult = "hpsbd";
 
     private Camera mainCam;

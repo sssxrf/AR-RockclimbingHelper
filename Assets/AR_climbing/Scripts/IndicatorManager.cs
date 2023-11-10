@@ -50,11 +50,11 @@ public class IndicatorManager : MonoBehaviour
         {
             DisplayTwoOtherPath();
         }
-        else if (SpeechContent == "Choose green path" || SpeechContent == "Choose green pass")
+        else if (SpeechContent == "Select green path" || SpeechContent == "Select green pass" || SpeechContent == "Select the green pass" || SpeechContent == "Select a green pass")
         {
             KeepGreenPath();
         }
-        else if (SpeechContent == "Choose orange path" || SpeechContent == "Choose orange path")
+        else if (SpeechContent == "Select orange path" || SpeechContent == "Select orange pass" || SpeechContent == "Select the orange pass" || SpeechContent == "Select a orange pass")
         {
             KeepOrangePath();
         }
@@ -72,27 +72,27 @@ public class IndicatorManager : MonoBehaviour
         if (DrawPathByHand)
         {
 
-            for(int i =0; i < Input.touchCount; i++)
-            {
-                var touch = Input.GetTouch(i);
-                var touchPhase = touch.phase;
+            // for(int i =0; i < Input.touchCount; i++)
+            // {
+            //     var touch = Input.GetTouch(i);
+            //     var touchPhase = touch.phase;
 
-                if(touchPhase == TouchPhase.Began || touchPhase == TouchPhase.Moved)
-                {
+            //     if(touchPhase == TouchPhase.Began || touchPhase == TouchPhase.Moved)
+            //     {
                 
-                    var ray = GetComponent<Camera>().ScreenPointToRay(touch.position);
+            //         var ray = GetComponent<Camera>().ScreenPointToRay(touch.position);
 
-                    var hasHit = Physics.Raycast(ray, out var hit, float.PositiveInfinity, layersToInclude);
+            //         var hasHit = Physics.Raycast(ray, out var hit, float.PositiveInfinity, layersToInclude);
 
-                    if (hasHit)
-                    {
+            //         if (hasHit)
+            //         {
                     
-                        Quaternion newObjectRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                        GameObject newObject = GameObject.Instantiate(IndicatorOrange, hit.point, newObjectRotation);
-                        newObject.gameObject.layer = LayerMask.NameToLayer("ignore Raycast");
-                    }
-                }
-            }
+            //             Quaternion newObjectRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+            //             GameObject newObject = GameObject.Instantiate(IndicatorOrange, hit.point, newObjectRotation);
+            //             newObject.gameObject.layer = LayerMask.NameToLayer("ignore Raycast");
+            //         }
+            //     }
+            // }
 
         }
         else
